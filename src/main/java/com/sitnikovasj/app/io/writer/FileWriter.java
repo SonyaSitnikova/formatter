@@ -1,24 +1,21 @@
-package com.sitnikovasj.Classes;
+package com.sitnikovasj.app.io.writer;
 
-import com.sitnikovasj.Exceptions.CloseException;
-import com.sitnikovasj.Exceptions.WriterException;
-import com.sitnikovasj.Interfaces.IClosable;
-import com.sitnikovasj.Interfaces.IWriter;
+import com.sitnikovasj.app.io.closable.CloseException;
+import com.sitnikovasj.app.io.closable.IClosable;
 
 import java.io.*;
 
-public class FileWriter implements IWriter, IClosable{
+public class FileWriter implements IWriter, IClosable {
 
     private BufferedWriter bufferedWriter;
 
     public FileWriter(final String path) throws WriterException {
         try {
-            Writer fileWriter = new java.io.FileWriter(path);
+            FileOutputStream outputStream = new FileOutputStream(new File(path));
+            Writer fileWriter = new OutputStreamWriter(outputStream, "utf-8");
             bufferedWriter = new BufferedWriter(fileWriter);
-        } catch (FileNotFoundException e) {
-            throw new WriterException("Opening file error", e);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new WriterException("Opening file error", e);
         }
     }
 

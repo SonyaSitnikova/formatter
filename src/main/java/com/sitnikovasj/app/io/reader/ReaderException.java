@@ -1,4 +1,4 @@
-package com.sitnikovasj.Exceptions;
+package com.sitnikovasj.app.io.reader;
 
 public class ReaderException extends Exception {
 

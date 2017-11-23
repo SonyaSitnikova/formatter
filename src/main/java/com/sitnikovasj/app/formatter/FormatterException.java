@@ -1,4 +1,4 @@
-package com.sitnikovasj.Exceptions;
+package com.sitnikovasj.app.formatter;
 
 public class FormatterException extends Exception {
 

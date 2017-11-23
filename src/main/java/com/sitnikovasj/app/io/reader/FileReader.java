@@ -1,26 +1,24 @@
-package com.sitnikovasj.Classes;
+package com.sitnikovasj.app.io.reader;
 
-import com.sitnikovasj.Exceptions.CloseException;
-import com.sitnikovasj.Exceptions.ReaderException;
-import com.sitnikovasj.Interfaces.IClosable;
-import com.sitnikovasj.Interfaces.IReader;
+import com.sitnikovasj.app.io.closable.CloseException;
+import com.sitnikovasj.app.io.closable.IClosable;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
 
-public class FileReader  implements IReader, IClosable {
+public class FileReader implements IReader, IClosable {
     private BufferedReader bufferedReader;
     private int currentSymbolId;
 
     public FileReader(final String path) throws ReaderException {
 
         try {
-            Reader fileReader = new java.io.FileReader(path);
+            InputStream fileStream = new FileInputStream(new File(path));
+            Reader fileReader = new InputStreamReader(fileStream, "utf-8");
             bufferedReader = new BufferedReader(fileReader);
         } catch (FileNotFoundException e) {
             throw new ReaderException("Opening file error", e);
+        } catch (UnsupportedEncodingException e) {
+            throw new ReaderException("Unsupported encoding", e);
         }
 
     }

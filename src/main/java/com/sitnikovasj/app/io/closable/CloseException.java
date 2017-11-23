@@ -1,4 +1,4 @@
-package com.sitnikovasj.Exceptions;
+package com.sitnikovasj.app.io.closable;
 
 public class CloseException extends Exception{
 
