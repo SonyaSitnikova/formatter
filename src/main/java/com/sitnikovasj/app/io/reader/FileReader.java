@@ -5,10 +5,18 @@ import com.sitnikovasj.app.io.closable.IClosable;
 
 import java.io.*;
 
+/**
+ * Implementation or the reader
+ */
 public class FileReader implements IReader, IClosable {
     private BufferedReader bufferedReader;
     private int currentSymbolId;
 
+    /**
+     * Constructor FileReader.
+     * @param path The path to the file
+     * @throws ReaderException error opening file and unsupported character set
+     */
     public FileReader(final String path) throws ReaderException {
 
         try {

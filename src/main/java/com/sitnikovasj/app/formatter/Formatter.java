@@ -5,14 +5,19 @@ import com.sitnikovasj.app.io.reader.ReaderException;
 import com.sitnikovasj.app.io.writer.IWriter;
 import com.sitnikovasj.app.io.writer.WriterException;
 
-public class Formatter implements IFormatter{
+/**
+ * Formatter to format Java source code that is specified in the input file
+ */
+public class Formatter implements IFormatter {
 
     @Override
-    public void format(IReader in, IWriter out) throws FormatterException {
+    public void format(final IReader in, final IWriter out) throws FormatterException {
+        char currentSymbol;
+        String str;
+        int p;
+        final int tab = 4;
         try {
-            char currentSymbol;
-            String str;
-            int p = 0;
+            p = 0;
             while (in.readNext()) {
                 currentSymbol = in.getChar();
                 if ((currentSymbol != ';') && (currentSymbol != '{') && (currentSymbol != '}')) {
@@ -20,43 +25,38 @@ public class Formatter implements IFormatter{
                 } else {
                     if (currentSymbol == ';') {
                         str = "";
-                        str = str + ";" + "\n";
+                        str = str + ";" + "\r\n";
                         for (int i = 0; i < p; i++) {
                             str = str + " ";
-                        }
-                        while (in.readNext() && (in.getChar()) == ' ') {
-
                         }
                         char[] c = str.toCharArray();
                         for (int i = 0; i < c.length; i++) {
                             out.write(c[i]);
                         }
+
                     }
                     if (currentSymbol == '{') {
                         str = "";
-                        p = p + 4;
-                        str = str + "{" + "\n";
+                        p = p + tab;
+                        str = str + "{" + "\r\n";
                         for (int i = 0; i < p; i++) {
                             str = str + " ";
                         }
-                        while (in.readNext() && (in.getChar()) == ' ') {
 
-                        }
                         char[] c = str.toCharArray();
                         for (int i = 0; i < c.length; i++) {
                             out.write(c[i]);
                         }
+
                     }
                     if (currentSymbol == '}') {
                         str = "";
-                        p = p - 4;
-                        str = str + "}" + "\n";
+                        p = p - tab;
+                        str = str + "}" + "\r\n";
                         for (int i = 0; i < p; i++) {
                             str = str + " ";
                         }
-                        while (in.readNext() && (in.getChar()) == ' ') {
 
-                        }
                         char[] c = str.toCharArray();
                         for (int i = 0; i < c.length; i++) {
                             out.write(c[i]);
