@@ -2,22 +2,28 @@ package com.sitnikovasj.app.lexer;
 
 import com.sitnikovasj.app.io.reader.IReader;
 import com.sitnikovasj.app.io.reader.ReaderException;
+import com.sitnikovasj.app.stateMashineLexer.Start;
+
 
 public class Lexer implements ILexer {
     private IReader reader;
-    private char currentSymbol;
-    private String name = "anyToken";
-    private String lexeme;
+    private Start start = new Start();
+    private IToken token;
 
-
-    public Lexer(IReader reader) throws ReaderException {
+    /**
+     *
+     * @param reader reader
+     * @throws ReaderException exception
+     */
+    public Lexer(final IReader reader) throws ReaderException {
         this.reader = reader;
+
     }
 
     @Override
     public boolean hasMoreTokens() throws LexerException {
         try {
-            return reader.readNext();
+            return reader.hasNextChar();
         } catch (ReaderException e) {
             throw new LexerException("Can't read", e);
         }
@@ -25,8 +31,6 @@ public class Lexer implements ILexer {
 
     @Override
     public IToken readToken() throws LexerException, ReaderException {
-        currentSymbol = reader.getChar();
-        lexeme = Character.toString(currentSymbol);
-        return new Token(name, lexeme);
+        return token = start.startFiniteStateMashine(reader);
     }
 }

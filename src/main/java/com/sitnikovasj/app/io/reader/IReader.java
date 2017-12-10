@@ -9,7 +9,7 @@ public interface IReader {
      * @return true, if read next symbol
      * @throws ReaderException if there was a read error
      */
-    boolean readNext() throws ReaderException;
+    boolean hasNextChar() throws ReaderException;
 
     /**
      *

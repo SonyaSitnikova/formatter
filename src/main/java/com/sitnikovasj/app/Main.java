@@ -18,16 +18,16 @@ public class Main {
      * @param args console arguments
      * @throws Exception exception
      */
-    public static void main1(final String[] args) throws Exception {
-        IFormatter formatter = new Formatter();
-        try (
-                FileReader fr = new FileReader(args[0]);
-                FileWriter fw = new FileWriter(args[1])
-        )
-        {
-            formatter.format(fr, fw);
-        }
-    }
+//    public static void main1(final String[] args) throws Exception {
+//        IFormatter formatter = new Formatter();
+//        try (
+//                FileReader fr = new FileReader(ags[0]);
+//                FileWriter fw = new FileWriter(args[1])
+//        )
+//        {
+//            formatter.format(fr, fw);
+//        }
+//    }
 
     public static void main(final String[] args) throws Exception {
         IFormatter2 formatter2 = new Formatter2();

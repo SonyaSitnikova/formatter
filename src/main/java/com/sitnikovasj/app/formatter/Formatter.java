@@ -18,7 +18,7 @@ public class Formatter implements IFormatter {
         final int tab = 4;
         try {
             p = 0;
-            while (in.readNext()) {
+            while (in.hasNextChar()) {
                 currentSymbol = in.getChar();
                 if ((currentSymbol != ';') && (currentSymbol != '{') && (currentSymbol != '}')) {
                     out.write(currentSymbol);

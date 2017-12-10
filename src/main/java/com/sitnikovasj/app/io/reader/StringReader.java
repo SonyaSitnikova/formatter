@@ -17,7 +17,7 @@ public class StringReader implements IReader {
     }
 
     @Override
-    public boolean readNext() throws ReaderException {
+    public boolean hasNextChar() throws ReaderException {
         return index < value.length();
     }
 
