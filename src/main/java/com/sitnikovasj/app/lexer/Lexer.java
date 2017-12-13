@@ -10,7 +10,9 @@ import com.sitnikovasj.app.lexer.stateMashineLexer.state.StateTransitions;
 
 import java.util.ArrayList;
 
-
+/**
+ * The Lexer returns tokens to the formatter
+ */
 public class Lexer implements ILexer {
 
     private IToken token;
@@ -54,12 +56,13 @@ public class Lexer implements ILexer {
         lexeme = new StringBuilder("");
         context = new Context(postponed, tokenName, lexeme);
 
-        while(!currentState.equals(finState) && reader.hasNextChar()){
+        while (!currentState.equals(finState) && reader.hasNextChar()) {
             postponed = context.getPostponed();
             if (postponed.size() > 0) {
                 currentSymbol = postponed.get(0);
                 postponed.remove(0);
-            } else { currentSymbol = reader.readChar();
+            } else {
+                currentSymbol = reader.readChar();
             }
 
             ICommand nextCommand = commands.getNextCommand(currentState, Character.toString(currentSymbol));

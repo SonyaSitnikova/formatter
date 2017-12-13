@@ -5,11 +5,17 @@ import com.sitnikovasj.app.lexer.stateMashineLexer.state.State;
 
 import java.util.HashMap;
 
+/**
+ *  Class for Commands reposytory
+ */
 public class CommandRepository implements ICommandRepository {
     private HashMap<MyPair, ICommand> commandsMap;
     private CommandSkip command;
 
-    public CommandRepository(){
+    /**
+     *  Constructor
+     */
+    public CommandRepository() {
         this.commandsMap = new HashMap<>();
         State def = new State("DEFAULT");
         State spacing = new State("SPACING");
@@ -28,7 +34,13 @@ public class CommandRepository implements ICommandRepository {
 
     }
 
-    public ICommand getNextCommand(State state, String simbol) {
+    /**
+     *
+     * @param state current State
+     * @param simbol current symbol
+     * @return command
+     */
+    public ICommand getNextCommand(final State state, final String simbol) {
 
         if (commandsMap.containsKey(new MyPair(state, simbol))) {
             return commandsMap.get(new MyPair(state, simbol));

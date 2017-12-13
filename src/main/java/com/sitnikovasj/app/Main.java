@@ -1,8 +1,6 @@
 package com.sitnikovasj.app;
 
-import com.sitnikovasj.app.formatter.Formatter;
 import com.sitnikovasj.app.formatter.Formatter2;
-import com.sitnikovasj.app.formatter.IFormatter;
 import com.sitnikovasj.app.formatter.IFormatter2;
 import com.sitnikovasj.app.io.reader.FileReader;
 import com.sitnikovasj.app.io.writer.FileWriter;
@@ -13,6 +11,11 @@ import com.sitnikovasj.app.lexer.Lexer;
  * Class main.
  */
 public class Main {
+    /**
+     * Constructor
+     */
+    public Main(){}
+
     /**
      * Main method.
      * @param args console arguments

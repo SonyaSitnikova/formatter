@@ -1,10 +1,18 @@
 package com.sitnikovasj.app.lexer.stateMashineLexer.state;
 
+/**
+ * the MyPaip contains the state and inputSignal(char)
+ */
 public class MyPair implements IMyPair {
     private State state;
     private String inputSignal;
 
-    public MyPair(State state, String inputSignal) {
+    /**
+     *
+     * @param state state
+     * @param inputSignal input char
+     */
+    public MyPair(final State state, final String inputSignal) {
         this.state = state;
         this.inputSignal = inputSignal;
     }
@@ -20,13 +28,19 @@ public class MyPair implements IMyPair {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         MyPair myPair = (MyPair) o;
 
-        if (state != null ? !state.equals(myPair.state) : myPair.state != null) return false;
+        if (state != null ? !state.equals(myPair.state) : myPair.state != null) {
+            return false;
+        }
         return inputSignal != null ? inputSignal.equals(myPair.inputSignal) : myPair.inputSignal == null;
     }
 

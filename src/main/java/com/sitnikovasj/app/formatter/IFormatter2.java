@@ -16,6 +16,9 @@ public interface IFormatter2 {
      * @param lexer - input stream
      * @param writer - output stream
      * @throws FormatterException with formatting error
+     * @throws LexerException with lexer error
+     * @throws ReaderException with read error
+     * @throws WriterException with write error
      */
     void format(ILexer lexer, IWriter writer) throws FormatterException, LexerException, ReaderException, WriterException;
 }

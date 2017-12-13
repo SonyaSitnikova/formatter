@@ -13,7 +13,8 @@ import com.sitnikovasj.app.lexer.LexerException;
 public class Formatter2 implements IFormatter2 {
 
     @Override
-    public void format(final ILexer lexer, final IWriter writer) throws FormatterException, LexerException, ReaderException, WriterException {
+    public void format(final ILexer lexer, final IWriter writer) throws FormatterException,
+            LexerException, ReaderException, WriterException {
         while (lexer.hasMoreTokens()) {
             IToken token = lexer.readToken();
             String lexeme = token.getLexeme();
@@ -21,9 +22,9 @@ public class Formatter2 implements IFormatter2 {
         }
     }
 
-    public void write (final IWriter writer, final String lexeme) throws WriterException {
+    private void write(final IWriter writer, final String lexeme) throws WriterException {
         char[] c = lexeme.toCharArray();
-        for (int i = 0; i<c.length; i++) {
+        for (int i = 0; i < c.length; i++) {
             writer.write(c[i]);
         }
     }

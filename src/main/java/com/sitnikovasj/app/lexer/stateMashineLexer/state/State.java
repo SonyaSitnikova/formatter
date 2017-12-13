@@ -1,10 +1,17 @@
 package com.sitnikovasj.app.lexer.stateMashineLexer.state;
 
+/**
+ * State for Lexer
+ */
 public class State implements IState {
     private String name;
 
-    public State (final String name) {
-        this.name = name;
+    /**
+     *
+     * @param sname the name of the state
+     */
+    public State(final String sname) {
+        this.name = sname;
     }
 
     @Override
@@ -13,9 +20,13 @@ public class State implements IState {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || this.getClass() != o.getClass()) return false;
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || this.getClass() != o.getClass()) {
+            return false;
+        }
 
         State state = (State) o;
 

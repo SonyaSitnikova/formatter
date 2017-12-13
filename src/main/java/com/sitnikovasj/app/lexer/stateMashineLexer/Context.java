@@ -2,8 +2,11 @@ package com.sitnikovasj.app.lexer.stateMashineLexer;
 
 import java.util.ArrayList;
 
+/**
+ * the Context contains postponed, tokenName, lexeme
+ */
 public class Context implements IContext {
-    ArrayList<Character> postponed = null;
+    private ArrayList<Character> postponed = null;
     private String tokenName;
     private StringBuilder lexeme;
 
@@ -13,7 +16,7 @@ public class Context implements IContext {
      * @param tokenName tokenName
      * @param lexeme lexeme
      */
-    public Context(ArrayList<Character> postponed, String tokenName, StringBuilder lexeme){
+    public Context(final ArrayList<Character> postponed, final String tokenName, final StringBuilder lexeme) {
         this.postponed = postponed;
         this.tokenName = tokenName;
         this.lexeme = lexeme;
@@ -23,7 +26,7 @@ public class Context implements IContext {
      * Constructor
      * @param postponed postponed
      */
-    public Context(ArrayList<Character> postponed){
+    public Context(final ArrayList<Character> postponed) {
         this.postponed = postponed;
     }
 
@@ -32,7 +35,7 @@ public class Context implements IContext {
      * @param tokenName tokenName
      * @param lexeme lexeme
      */
-    public Context(String tokenName, StringBuilder lexeme){
+    public Context(final String tokenName, final StringBuilder lexeme) {
         this.tokenName = tokenName;
         this.lexeme = lexeme;
     }
@@ -50,7 +53,7 @@ public class Context implements IContext {
     }
 
     @Override
-    public ArrayList<Character> addPostponed(Character p) {
+    public ArrayList<Character> addPostponed(final Character p) {
         this.postponed.add(p);
         return null;
     }
@@ -61,8 +64,8 @@ public class Context implements IContext {
     }
 
     @Override
-    public String setTokenName(String tokenName) {
-        this.tokenName = tokenName;
+    public String setTokenName(final String tokenNam) {
+        this.tokenName = tokenNam;
         return tokenName;
     }
 
@@ -72,8 +75,8 @@ public class Context implements IContext {
     }
 
     @Override
-    public StringBuilder addLexeme(StringBuilder lexeme) {
-        this.lexeme = lexeme;
+    public StringBuilder addLexeme(final StringBuilder lexem) {
+        this.lexeme = lexem;
         return lexeme;
     }
 }

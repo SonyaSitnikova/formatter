@@ -2,10 +2,16 @@ package com.sitnikovasj.app.lexer.stateMashineLexer.state;
 
 import java.util.HashMap;
 
+/**
+ *  State Transitions for Lexer
+ */
 public class StateTransitions implements IStateTransitions {
     private HashMap<MyPair, State> stateTransitions;
     private State fin;
 
+    /**
+     *  Constructor
+     */
     public StateTransitions() {
         this.stateTransitions = new HashMap<>();
         State def = new State("DEFAULT");
@@ -23,7 +29,7 @@ public class StateTransitions implements IStateTransitions {
     }
 
     @Override
-    public State getNextState(State state, String inputSignal) {
+    public State getNextState(final State state, final String inputSignal) {
         //return stateTransitions.getOrDefault(new MyPair(state, inputSignal),fin);
         if (stateTransitions.containsKey(new MyPair(state, inputSignal))) {
             return stateTransitions.get(new MyPair(state, inputSignal));
