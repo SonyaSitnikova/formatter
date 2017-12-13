@@ -1,4 +1,7 @@
-package com.sitnikovasj.app.stateMashineLexer;
+package com.sitnikovasj.app.lexer.stateMashineLexer.command;
+
+import com.sitnikovasj.app.lexer.stateMashineLexer.state.MyPair;
+import com.sitnikovasj.app.lexer.stateMashineLexer.state.State;
 
 import java.util.HashMap;
 
@@ -20,9 +23,8 @@ public class CommandRepository implements ICommandRepository {
         commandsMap.put(new MyPair(def, "}"), append);
         commandsMap.put(new MyPair(def, " "), append);
         commandsMap.put(new MyPair(spacing, " "), append);
-        commandsMap.put(new MyPair(spacing, " "), append);
-        commandsMap.put(new MyPair(def, ";"), append);
         commandsMap.put(new MyPair(def, null), append);
+        commandsMap.put(new MyPair(spacing, null), postpone);
 
     }
 

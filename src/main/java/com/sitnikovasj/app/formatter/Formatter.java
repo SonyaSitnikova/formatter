@@ -19,7 +19,7 @@ public class Formatter implements IFormatter {
         try {
             p = 0;
             while (in.hasNextChar()) {
-                currentSymbol = in.getChar();
+                currentSymbol = in.readChar();
                 if ((currentSymbol != ';') && (currentSymbol != '{') && (currentSymbol != '}')) {
                     out.write(currentSymbol);
                 } else {

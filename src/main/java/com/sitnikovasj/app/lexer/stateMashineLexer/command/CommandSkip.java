@@ -1,4 +1,6 @@
-package com.sitnikovasj.app.stateMashineLexer;
+package com.sitnikovasj.app.lexer.stateMashineLexer.command;
+
+import com.sitnikovasj.app.lexer.stateMashineLexer.Context;
 
 public class CommandSkip implements ICommand {
 

@@ -3,4 +3,4 @@
  * Each nextToken() call starts the State Machine
  * Final state means the token is ready
  */
-package com.sitnikovasj.app.stateMashineLexer;
+package com.sitnikovasj.app.lexer.stateMashineLexer;

@@ -11,6 +11,7 @@ import java.io.*;
 public class FileReader implements IReader, IClosable {
     private BufferedReader bufferedReader;
     private int currentSymbolId;
+    private int prevSymbol;
 
     /**
      * Constructor FileReader.
@@ -42,16 +43,18 @@ public class FileReader implements IReader, IClosable {
 
     @Override
     public boolean hasNextChar() throws ReaderException {
-        try {
-            currentSymbolId = bufferedReader.read();
-            return currentSymbolId > -1;
-        } catch (IOException e) {
-            throw new ReaderException("Attempting to read outside of the input stream", e);
-        }
+        return currentSymbolId > -1;
+
     }
 
     @Override
-    public char getChar() throws ReaderException {
-        return (char) currentSymbolId;
+    public char readChar() throws ReaderException {
+        try {
+        prevSymbol = currentSymbolId;
+        currentSymbolId = bufferedReader.read();
+        return (char) prevSymbol;
+        } catch (IOException e) {
+            throw new ReaderException("Attempting to read outside of the input stream", e);
+        }
     }
 }

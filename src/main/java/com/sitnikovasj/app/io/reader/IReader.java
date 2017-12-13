@@ -16,5 +16,5 @@ public interface IReader {
      * @return getChar
      * @throws ReaderException if there was a read error
      */
-    char getChar() throws ReaderException;
+    char readChar() throws ReaderException;
 }

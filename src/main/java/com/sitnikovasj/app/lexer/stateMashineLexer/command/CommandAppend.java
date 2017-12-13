@@ -1,4 +1,6 @@
-package com.sitnikovasj.app.stateMashineLexer;
+package com.sitnikovasj.app.lexer.stateMashineLexer.command;
+
+import com.sitnikovasj.app.lexer.stateMashineLexer.Context;
 
 public class CommandAppend implements ICommand {
 
@@ -8,7 +10,7 @@ public class CommandAppend implements ICommand {
         String tokenName = context.getTokenName();
         lexeme.append(currentSymbol);
         tokenName = lexeme.toString();
-        context.setLexeme(lexeme);
+        context.addLexeme(lexeme);
         context.setTokenName(tokenName);
     }
 }

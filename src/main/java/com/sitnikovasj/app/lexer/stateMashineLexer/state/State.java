@@ -1,4 +1,4 @@
-package com.sitnikovasj.app.stateMashineLexer;
+package com.sitnikovasj.app.lexer.stateMashineLexer.state;
 
 public class State implements IState {
     private String name;

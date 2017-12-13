@@ -1,4 +1,4 @@
-package com.sitnikovasj.app.stateMashineLexer;
+package com.sitnikovasj.app.lexer.stateMashineLexer.state;
 
 import java.util.HashMap;
 

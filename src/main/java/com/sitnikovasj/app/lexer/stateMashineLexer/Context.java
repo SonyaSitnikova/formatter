@@ -1,9 +1,9 @@
-package com.sitnikovasj.app.stateMashineLexer;
+package com.sitnikovasj.app.lexer.stateMashineLexer;
 
 import java.util.ArrayList;
 
 public class Context implements IContext {
-    private ArrayList<Character> postponed = null;
+    ArrayList<Character> postponed = null;
     private String tokenName;
     private StringBuilder lexeme;
 
@@ -50,12 +50,19 @@ public class Context implements IContext {
     }
 
     @Override
+    public ArrayList<Character> addPostponed(Character p) {
+        this.postponed.add(p);
+        return null;
+    }
+
+    @Override
     public String getTokenName() {
         return tokenName;
     }
 
     @Override
     public String setTokenName(String tokenName) {
+        this.tokenName = tokenName;
         return tokenName;
     }
 
@@ -65,7 +72,8 @@ public class Context implements IContext {
     }
 
     @Override
-    public StringBuilder setLexeme(StringBuilder lexeme) {
+    public StringBuilder addLexeme(StringBuilder lexeme) {
+        this.lexeme = lexeme;
         return lexeme;
     }
 }

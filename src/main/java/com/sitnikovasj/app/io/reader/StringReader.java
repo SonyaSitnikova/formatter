@@ -22,7 +22,7 @@ public class StringReader implements IReader {
     }
 
     @Override
-    public char getChar() throws ReaderException {
+    public char readChar() throws ReaderException {
         try {
             return value.charAt(index++);
         } catch (StringIndexOutOfBoundsException e) {
