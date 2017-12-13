@@ -11,5 +11,5 @@ public interface ICommand {
      * @param currentSymbol char
      * @param context context
      */
-    void execute(final char currentSymbol, final Context context);
+    void execute(char currentSymbol, Context context);
 }

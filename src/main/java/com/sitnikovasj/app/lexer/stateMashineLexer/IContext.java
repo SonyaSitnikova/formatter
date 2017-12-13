@@ -43,6 +43,6 @@ public interface IContext {
      * @param lexeme lexeme
      * @return lexeme
      */
-    public StringBuilder addLexeme(StringBuilder lexeme);
+    public StringBuilder addLexeme(char lexeme);
 
 }

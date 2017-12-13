@@ -10,7 +10,6 @@ import java.util.HashMap;
  */
 public class CommandRepository implements ICommandRepository {
     private HashMap<MyPair, ICommand> commandsMap;
-    private CommandSkip command;
 
     /**
      *  Constructor
@@ -20,30 +19,36 @@ public class CommandRepository implements ICommandRepository {
         State def = new State("DEFAULT");
         State spacing = new State("SPACING");
 
-        ICommand append = new CommandAppend();
-        ICommand postpone = new CommandPostpone();
-        ICommand skip = new CommandSkip();
+        commandsMap.put(new MyPair(def, ";"), (symbol, context) -> {
+            context.addLexeme(symbol); context.setTokenName("semicolon"); });
+        commandsMap.put(new MyPair(def, "{"), (symbol, context) -> {
+            context.addLexeme(symbol); context.setTokenName("openBracket"); });
+        commandsMap.put(new MyPair(def, "}"), (symbol, context) -> {
+            context.addLexeme(symbol); context.setTokenName("closeBracket"); });
+        commandsMap.put(new MyPair(def, " "), (symbol, context) -> {
+            context.addLexeme(symbol); context.setTokenName("space"); });
+        commandsMap.put(new MyPair(def, "\n"), (symbol, context) -> {
+            context.addLexeme(symbol); context.setTokenName("newLine"); });
+        commandsMap.put(new MyPair(def, null), (symbol, context) -> {
+            context.addLexeme(symbol); context.setTokenName("char"); });
 
-        commandsMap.put(new MyPair(def, ";"), append);
-        commandsMap.put(new MyPair(def, "{"), append);
-        commandsMap.put(new MyPair(def, "}"), append);
-        commandsMap.put(new MyPair(def, " "), append);
-        commandsMap.put(new MyPair(spacing, " "), append);
-        commandsMap.put(new MyPair(def, null), append);
-        commandsMap.put(new MyPair(spacing, null), postpone);
+        commandsMap.put(new MyPair(spacing, " "), (symbol, context) -> {
+            context.addLexeme(symbol); context.setTokenName("space"); });
+        commandsMap.put(new MyPair(spacing, null), (symbol, context) -> {
+            context.addPostponed(symbol); });
 
     }
 
     /**
      *
      * @param state current State
-     * @param simbol current symbol
+     * @param symbol current symbol
      * @return command
      */
-    public ICommand getNextCommand(final State state, final String simbol) {
+    public ICommand getNextCommand(final State state, final String symbol) {
 
-        if (commandsMap.containsKey(new MyPair(state, simbol))) {
-            return commandsMap.get(new MyPair(state, simbol));
+        if (commandsMap.containsKey(new MyPair(state, symbol))) {
+            return commandsMap.get(new MyPair(state, symbol));
         } else {
             return commandsMap.get(new MyPair(state, null));
         }

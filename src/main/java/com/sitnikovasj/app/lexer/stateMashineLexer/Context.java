@@ -75,8 +75,8 @@ public class Context implements IContext {
     }
 
     @Override
-    public StringBuilder addLexeme(final StringBuilder lexem) {
-        this.lexeme = lexem;
+    public StringBuilder addLexeme(final char lexem) {
+        this.lexeme.append(lexem);
         return lexeme;
     }
 }
