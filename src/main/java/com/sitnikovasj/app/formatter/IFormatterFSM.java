@@ -9,7 +9,7 @@ import com.sitnikovasj.app.lexer.LexerException;
 /**
  *  Formatter interface
  */
-public interface IFormatter2 {
+public interface IFormatterFSM {
 
     /**
      *
