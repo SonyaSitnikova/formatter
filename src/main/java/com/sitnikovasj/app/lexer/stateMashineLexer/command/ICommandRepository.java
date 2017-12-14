@@ -12,5 +12,5 @@ public interface ICommandRepository {
      * @param simbol current symbol
      * @return command
      */
-    public ICommand getNextCommand(State state, String simbol);
+    ICommand getNextCommand(State state, String simbol);
 }

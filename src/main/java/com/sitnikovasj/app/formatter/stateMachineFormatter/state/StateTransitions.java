@@ -3,7 +3,7 @@ package com.sitnikovasj.app.formatter.stateMachineFormatter.state;
 import java.util.HashMap;
 
 /**
- *  State Transitions for Lexer
+ *  State Transitions for Formatter
  */
 public class StateTransitions implements IStateTransitions {
     private HashMap<PairST, State> stateTransitions;

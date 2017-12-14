@@ -1,9 +1,7 @@
 package com.sitnikovasj.app.formatter.stateMachineFormatter.state;
 
-import com.sitnikovasj.app.formatter.stateMachineFormatter.state.State;
-
 /**
- * interface for Pair(state, inputChar)
+ * interface for Pair(state, tokenName)
  */
 public interface IPairST {
 

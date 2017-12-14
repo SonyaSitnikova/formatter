@@ -1,7 +1,7 @@
 package com.sitnikovasj.app.formatter.stateMachineFormatter.state;
 
 /**
- * the MyPaip contains the state and inputSignal(char)
+ * the MyPair contains the state and tokenName
  */
 public class PairST implements IPairST {
     private State state;

@@ -10,39 +10,39 @@ public interface IContext {
      *
      * @return postponed
      */
-    public ArrayList<Character> getPostponed();
+    ArrayList<Character> getPostponed();
 
     /**
      *
      * @param p add postpone
      * @return postponed
      */
-    public ArrayList<Character> addPostponed(Character p);
+    ArrayList<Character> addPostponed(Character p);
 
     /**
      *
      * @return tokenName
      */
-    public String getTokenName();
+    String getTokenName();
 
     /**
      *
      * @param tokenName tokenName
      * @return tokenName
      */
-    public String setTokenName(String tokenName);
+    String setTokenName(String tokenName);
 
     /**
      *
      * @return lexeme
      */
-    public StringBuilder getLexeme();
+    StringBuilder getLexeme();
 
     /**
      *
      * @param lexeme lexeme
      * @return lexeme
      */
-    public StringBuilder addLexeme(char lexeme);
+    StringBuilder addLexeme(char lexeme);
 
 }

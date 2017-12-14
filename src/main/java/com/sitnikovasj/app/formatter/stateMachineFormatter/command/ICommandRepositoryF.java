@@ -3,7 +3,7 @@ package com.sitnikovasj.app.formatter.stateMachineFormatter.command;
 import com.sitnikovasj.app.formatter.stateMachineFormatter.state.State;
 
 /**
- * interface command reposytory
+ * interface command repository
  */
 public interface ICommandRepositoryF {
     /**
@@ -12,5 +12,5 @@ public interface ICommandRepositoryF {
      * @param tokenName tokenName
      * @return command
      */
-    public ICommand getNextCommand(State state, String tokenName);
+    ICommand getNextCommand(State state, String tokenName);
 }
