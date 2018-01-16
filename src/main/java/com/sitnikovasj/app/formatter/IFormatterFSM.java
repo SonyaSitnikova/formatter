@@ -20,5 +20,5 @@ public interface IFormatterFSM {
      * @throws ReaderException with read error
      * @throws WriterException with write error
      */
-    void format(ILexer lexer, IWriter writer) throws FormatterException, LexerException, ReaderException, WriterException;
+    void format(ILexer lexer, IWriter writer) throws FormatterException;
 }

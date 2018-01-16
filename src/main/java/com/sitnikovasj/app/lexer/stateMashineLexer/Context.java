@@ -53,9 +53,8 @@ public class Context implements IContext {
     }
 
     @Override
-    public ArrayList<Character> addPostponed(final Character p) {
+    public void addPostponed(final Character p) {
         this.postponed.add(p);
-        return null;
     }
 
     @Override
@@ -64,9 +63,8 @@ public class Context implements IContext {
     }
 
     @Override
-    public String setTokenName(final String tokenNam) {
+    public void setTokenName(final String tokenNam) {
         this.tokenName = tokenNam;
-        return tokenName;
     }
 
     @Override
@@ -75,8 +73,7 @@ public class Context implements IContext {
     }
 
     @Override
-    public StringBuilder addLexeme(final char lexem) {
+    public void addLexeme(final char lexem) {
         this.lexeme.append(lexem);
-        return lexeme;
     }
 }

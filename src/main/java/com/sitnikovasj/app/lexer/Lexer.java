@@ -36,6 +36,8 @@ public class Lexer implements ILexer {
         this.reader = reader;
         stateTransitions = new StateTransitions();
         commands = new CommandRepository();
+        currentState = new State("DEFAULT");
+        finState = new State("FINAL");
     }
 
     @Override
@@ -48,27 +50,28 @@ public class Lexer implements ILexer {
     }
 
     @Override
-    public IToken readToken() throws LexerException, ReaderException {
-
-        currentState = new State("DEFAULT");
-        finState = new State("FINAL");
+    public IToken readToken() throws LexerException {
 
         lexeme = new StringBuilder("");
         context = new Context(postponed, tokenName, lexeme);
 
-        while (!currentState.equals(finState) && reader.hasNextChar()) {
-            postponed = context.getPostponed();
-            if (postponed.size() > 0) {
-                currentSymbol = postponed.get(0);
-                postponed.remove(0);
-            } else {
-                currentSymbol = reader.readChar();
+        try {
+            while (!currentState.equals(finState) && reader.hasNextChar()) {
+                postponed = context.getPostponed();
+                if (postponed.size() > 0) {
+                    currentSymbol = postponed.get(0);
+                    postponed.remove(0);
+                } else {
+                    currentSymbol = reader.readChar();
+                }
+
+                ICommand nextCommand = commands.getNextCommand(currentState, Character.toString(currentSymbol));
+                nextCommand.execute(currentSymbol, context);
+
+                currentState = stateTransitions.getNextState(currentState, Character.toString(currentSymbol));
             }
-
-            ICommand nextCommand = commands.getNextCommand(currentState, Character.toString(currentSymbol));
-            nextCommand.execute(currentSymbol, context);
-
-            currentState = stateTransitions.getNextState(currentState, Character.toString(currentSymbol));
+        } catch (ReaderException e) {
+            throw new LexerException("reader next char error", e);
         }
 
         tokenName = context.getTokenName();

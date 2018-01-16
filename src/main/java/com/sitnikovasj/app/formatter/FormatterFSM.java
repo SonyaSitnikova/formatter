@@ -5,7 +5,6 @@ import com.sitnikovasj.app.formatter.stateMachineFormatter.command.CommandReposi
 import com.sitnikovasj.app.formatter.stateMachineFormatter.command.ICommand;
 import com.sitnikovasj.app.formatter.stateMachineFormatter.state.State;
 import com.sitnikovasj.app.formatter.stateMachineFormatter.state.StateTransitions;
-import com.sitnikovasj.app.io.reader.ReaderException;
 import com.sitnikovasj.app.io.writer.IWriter;
 import com.sitnikovasj.app.io.writer.WriterException;
 import com.sitnikovasj.app.lexer.ILexer;
@@ -17,27 +16,41 @@ import com.sitnikovasj.app.lexer.LexerException;
  */
 public class FormatterFSM implements IFormatterFSM {
 
+    CommandRepositoryF commands;
+    State state;
+    StateTransitions st;
+    /**
+     * Constructor formatter
+     */
+    public FormatterFSM() {
+        commands = new CommandRepositoryF();
+        state = new State("DEFAULT");
+        st = new StateTransitions();
+    }
+
     @Override
-    public void format(final ILexer lexer, final IWriter writer) throws FormatterException,
-            LexerException, ReaderException, WriterException {
+    public void format(final ILexer lexer, final IWriter writer) throws FormatterException {
         IToken token;
+        IToken nextToken = null;
         String tokenName;
         Context context = new Context();
         ICommand nextCommand;
-        CommandRepositoryF commands = new CommandRepositoryF();
-        State state = new State("DEFAULT");
-        StateTransitions st = new StateTransitions();
 
-        while (lexer.hasMoreTokens()) {
-            token = lexer.readToken();
-            tokenName = token.getName();
-            nextCommand = commands.getNextCommand(state, tokenName);
-            nextCommand.execute(context, token);
-            nextCommand.execute();
-            state = st.getNextState(state, tokenName);
+        try {
+            while (lexer.hasMoreTokens()) {
+                token = nextToken;
+                nextToken = lexer.readToken();
+                tokenName = token.getName();
+                nextCommand = commands.getNextCommand(state, tokenName);
+                nextCommand.execute(context, token);
+                nextCommand.execute();
+                state = st.getNextState(state, tokenName);
 
-            String lexeme = token.getLexeme();
-            write(writer, lexeme);
+                String lexeme = token.getLexeme();
+                //write(writer, lexeme);
+            }
+        } catch (LexerException e) {
+            throw new FormatterException("read token error", e);
         }
     }
 

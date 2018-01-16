@@ -20,5 +20,5 @@ public interface ILexer {
      * @throws LexerException when can't read
      * @throws ReaderException when can't read
      */
-    IToken readToken() throws LexerException, ReaderException;
+    IToken readToken() throws LexerException;
 }

@@ -15,9 +15,8 @@ public interface IContext {
     /**
      *
      * @param p add postpone
-     * @return postponed
      */
-    ArrayList<Character> addPostponed(Character p);
+    void addPostponed(Character p);
 
     /**
      *
@@ -30,7 +29,7 @@ public interface IContext {
      * @param tokenName tokenName
      * @return tokenName
      */
-    String setTokenName(String tokenName);
+    void setTokenName(String tokenName);
 
     /**
      *
@@ -43,6 +42,6 @@ public interface IContext {
      * @param lexeme lexeme
      * @return lexeme
      */
-    StringBuilder addLexeme(char lexeme);
+    void addLexeme(char lexeme);
 
 }
