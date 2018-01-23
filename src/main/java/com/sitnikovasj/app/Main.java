@@ -6,6 +6,8 @@ import com.sitnikovasj.app.io.reader.FileReader;
 import com.sitnikovasj.app.io.writer.FileWriter;
 import com.sitnikovasj.app.lexer.ILexer;
 import com.sitnikovasj.app.lexer.Lexer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Class main.
@@ -21,8 +23,10 @@ public class Main {
      * @param args console arguments
      * @throws Exception exception
      */
+    final static Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(final String[] args) throws Exception {
+        logger.info("info");
         IFormatterFSM formatterFSM = new FormatterFSM();
         try (
                 FileReader fr = new FileReader(args[0]);
